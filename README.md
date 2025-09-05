@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SNX Dashboard
 
-## Getting Started
+Современный веб-дашборд для управления виджетами отзывов, построенный на Next.js 15 с использованием React 19, Tailwind CSS 4 и shadcn/ui компонентов.
 
-First, run the development server:
+## 🚀 Особенности
 
+- **Современный стек**: Next.js 15, React 19, TypeScript 5
+- **Стилизация**: Tailwind CSS 4 с поддержкой CSS переменных
+- **UI компоненты**: shadcn/ui с темой "New York"
+- **Виджет отзывов**: Встроенный виджет для отображения отзывов с CMS
+- **Адаптивный дизайн**: Полностью адаптивный интерфейс с поддержкой мобильных устройств
+- **Настройки в реальном времени**: Панель настроек для конфигурации виджетов
+- **Боковая панель**: Современная навигация с возможностью сворачивания
+
+## 📦 Технологии
+
+### Основные зависимости
+- **Next.js** 15.5.2 - React фреймворк с поддержкой Turbopack
+- **React** 19.1.0 - Библиотека для создания пользовательских интерфейсов
+- **TypeScript** 5 - Типизированный JavaScript
+- **Tailwind CSS** 4 - Utility-first CSS фреймворк
+
+### UI библиотеки
+- **Radix UI** - Доступные компоненты без стилей
+- **Lucide React** - Современные SVG иконки
+- **Remix Icon** - Дополнительные иконки
+- **shadcn/ui** - Готовые компоненты с современным дизайном
+
+### Утилиты
+- **clsx** - Условное объединение CSS классов
+- **tailwind-merge** - Умное слияние Tailwind классов
+- **class-variance-authority** - Создание вариантов компонентов
+
+## 🛠 Установка и запуск
+
+### Предварительные требования
+- Node.js 18+ 
+- npm или yarn
+
+### Установка
 ```bash
+# Клонирование репозитория
+git clone git@github.com:tbp/snx-dashboard.git
+cd snx-dashboard
+
+# Установка зависимостей
+npm install
+
+# Запуск в режиме разработки
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Доступные команды
+```bash
+# Разработка с Turbopack
+npm run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Сборка для продакшена
+npm run build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Запуск продакшен сервера
+npm start
 
-## Learn More
+# Линтинг кода
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Структура проекта
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+snx-dashboard/
+├── app/                    # Next.js App Router
+│   ├── dashboard/         # Страница дашборда
+│   ├── globals.css        # Глобальные стили
+│   ├── layout.tsx         # Корневой layout
+│   └── page.tsx           # Главная страница
+├── components/            # React компоненты
+│   ├── ui/               # shadcn/ui компоненты
+│   ├── app-sidebar.tsx   # Боковая панель навигации
+│   ├── reviews-widget.tsx # Виджет отзывов
+│   ├── settings-panel.tsx # Панель настроек
+│   ├── widgets.tsx       # Контейнер виджетов
+│   └── ...
+├── hooks/                # Пользовательские хуки
+├── lib/                  # Утилиты и конфигурация
+├── public/               # Статические файлы
+│   └── dist/            # Собранные файлы виджета
+└── dist/                # Дистрибутивы виджета
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Компоненты
 
-## Deploy on Vercel
+### Основные компоненты
+- **AppSidebar** - Навигационная боковая панель с переключателем команд
+- **ReviewsWidget** - Виджет для отображения отзывов из CMS
+- **SettingsPanel** - Панель настроек с контролами для виджетов
+- **UserDropdown** - Выпадающее меню пользователя
+- **Widgets** - Контейнер для размещения виджетов
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### UI компоненты (shadcn/ui)
+- Button, Input, Label, Textarea
+- Dialog, Popover, Tooltip
+- Select, Checkbox, Slider
+- Avatar, Badge, Progress
+- Sidebar, ScrollArea, Separator
+- И многие другие...
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Конфигурация
+
+### Tailwind CSS
+Проект использует Tailwind CSS 4 с настройкой CSS переменных для темизации. Конфигурация находится в `components.json`.
+
+### shadcn/ui
+```json
+{
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide"
+}
+```
+
+## 📱 Виджет отзывов
+
+Проект включает в себя встроенный виджет отзывов с следующими возможностями:
+
+- **Динамическая загрузка**: Автоматическая загрузка скрипта виджета
+- **Настройки в реальном времени**: Изменение параметров через панель настроек
+- **Гибкая конфигурация**: Поддержка различных CMS ID и параметров отображения
+- **Обработка ошибок**: Graceful fallback при недоступности скрипта
+
+### Параметры виджета
+- `cmsId` - Идентификатор CMS системы
+- `maxReviews` - Максимальное количество отзывов
+- `showHeader` - Показывать заголовок
+- `showFilters` - Показывать фильтры
+- `showPagination` - Показывать пагинацию
+
+## 🚀 Развертывание
+
+### Vercel (рекомендуется)
+```bash
+# Установка Vercel CLI
+npm i -g vercel
+
+# Развертывание
+vercel
+```
+
+### Docker
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+## 🤝 Участие в разработке
+
+1. Форкните репозиторий
+2. Создайте ветку для новой функции (`git checkout -b feature/amazing-feature`)
+3. Зафиксируйте изменения (`git commit -m 'Add some amazing feature'`)
+4. Отправьте в ветку (`git push origin feature/amazing-feature`)
+5. Откройте Pull Request
+
+## 📄 Лицензия
+
+Этот проект является частной разработкой. Все права защищены.
+
+## 🔗 Полезные ссылки
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
+- [Radix UI](https://www.radix-ui.com)
+- [Lucide Icons](https://lucide.dev)
+
+---
+
+Создано с ❤️ для SNX проекта
