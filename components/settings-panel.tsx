@@ -211,7 +211,7 @@ const SettingsPanel = () => {
 
   return (
     <ScrollArea>
-      <div className="w-[320px] px-5 md:px-7">
+      <div className="w-[280px] px-5 md:px-7">
         <SettingsPanelContent />
       </div>
     </ScrollArea>
